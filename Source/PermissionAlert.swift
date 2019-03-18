@@ -95,7 +95,7 @@ internal class DisabledAlert: PermissionAlert {
     }
 }
 
-private extension String {
+internal extension String {
     var localized: String {
         return NSLocalizedString(self, comment: "")
     }
