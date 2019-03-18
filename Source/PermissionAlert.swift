@@ -112,10 +112,10 @@ internal class DeniedAlert: PermissionAlert {
     override init(permission: Permission) {
         super.init(permission: permission)
         
-        title    = "Permission for \(permission) was denied"
-        message  = "Please enable access to \(permission) in the Settings app."
-        cancel   = "Cancel"
-        settings = "Settings"
+        title    = "Permission for \(permission) was denied".localizedCapitalized
+        message  = "Please enable access to \(permission) in the Settings app.".localizedCapitalized
+        cancel   = "Cancel".localizedCapitalized
+        settings = "Settings".localizedCapitalized
     }
     
     @objc func settingsHandler() {
