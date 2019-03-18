@@ -111,27 +111,11 @@ internal class DeniedAlert: PermissionAlert {
     
     override init(permission: Permission) {
         super.init(permission: permission)
-        
-        if #available(iOS 9.0, *) {
-            title    = "Permission for \(permission) was denied".localizedCapitalized
-        } else {
-            title    = "Permission for \(permission) was denied"
-        }
-        if #available(iOS 9.0, *) {
-            message  = "Please enable access to \(permission) in the Settings app.".localizedCapitalized
-        } else {
-            message  = "Please enable access to \(permission) in the Settings app."
-        }
-        if #available(iOS 9.0, *) {
-            cancel   = "Cancel".localizedCapitalized
-        } else {
-            cancel   = "Cancel"
-        }
-        if #available(iOS 9.0, *) {
-            settings = "Settings".localizedCapitalized
-        } else {
-            settings = "Settings"
-        }
+
+        title    = NSLocalizedString("Permission for \(permission) was denied", comment: "")
+        message  = NSLocalizedString("Please enable access to \(permission) in the Settings app.", comment: "")
+        cancel   = NSLocalizedString("Cancel", comment: "")
+        cancel   = NSLocalizedString("Settings", comment: "")
     }
     
     @objc func settingsHandler() {
