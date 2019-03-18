@@ -89,8 +89,8 @@ internal class DisabledAlert: PermissionAlert {
     override init(permission: Permission) {
         super.init(permission: permission)
         
-        title   = "\(permission) is currently disabled"
-        message = "Please enable access to \(permission) in the Settings app."
+        title    = String(format: "%@ is currently disabled".localized, permission)
+        message  = String(format: "Please enable access to %@ in the Settings app.".localized, permission)
         cancel  = "OK"
     }
 }
