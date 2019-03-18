@@ -95,6 +95,12 @@ internal class DisabledAlert: PermissionAlert {
     }
 }
 
+private extension String {
+    var localized: String {
+        return NSLocalizedString(self, comment: "")
+    }
+}
+
 internal class DeniedAlert: PermissionAlert {
     override var controller: UIAlertController {
         let controller = super.controller
@@ -112,10 +118,10 @@ internal class DeniedAlert: PermissionAlert {
     override init(permission: Permission) {
         super.init(permission: permission)
 
-        title    = NSLocalizedString("Permission for \(permission) was denied", comment: "")
-        message  = NSLocalizedString("Please enable access to \(permission) in the Settings app.", comment: "")
-        cancel   = NSLocalizedString("Cancel", comment: "")
-        cancel   = NSLocalizedString("Settings", comment: "")
+        title    = String(format: "Permission for %@ was denied".localized, permission)
+        message  = String(format: "Please enable access to %@ in the Settings app.".localized, permission)
+        cancel   = "Cancel".localized
+        settings = "Settings".localized
     }
     
     @objc func settingsHandler() {
