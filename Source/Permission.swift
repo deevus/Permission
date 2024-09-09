@@ -133,7 +133,7 @@ open class Permission: NSObject {
     #endif
     
     /// The permission domain.
-    public let type: PermissionType
+    public let type: PermissionType?
     
     /// The permission status.
     open var status: PermissionStatus {
@@ -155,11 +155,11 @@ open class Permission: NSObject {
         #endif
         
         #if PERMISSION_MICROPHONE
-        if case .microphone = type { return statusMicrophone }
+        if let type = type, case .microphone = type { return statusMicrophone }
         #endif
         
         #if PERMISSION_CAMERA
-        if case .camera = type { return statusCamera }
+        if let type = type, case .camera = type { return statusCamera }
         #endif
         
         #if PERMISSION_PHOTOS
@@ -293,14 +293,14 @@ open class Permission: NSObject {
         #endif
         
         #if PERMISSION_MICROPHONE
-        if case .microphone = type {
+        if let type = type, case .microphone = type {
             requestMicrophone(callback)
             return
         }
         #endif
         
         #if PERMISSION_CAMERA
-        if case .camera = type {
+        if let type = type, case .camera = type {
             requestCamera(callback)
             return
         }
@@ -376,7 +376,7 @@ open class Permission: NSObject {
 extension Permission {
     /// The textual representation of self.
     override open var description: String {
-        return type.description.localized
+        return type?.description.localized ?? ""
     }
     
     /// A textual representation of this instance, suitable for debugging.

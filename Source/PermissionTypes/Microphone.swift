@@ -27,11 +27,11 @@ import AVFoundation
 
 internal extension Permission {
     var statusMicrophone: PermissionStatus {
-        let status = AVAudioSession.sharedInstance().recordPermission
+        let status = AVAudioSession.sharedInstance().recordPermission()
         
         switch status {
-        case AVAudioSession.RecordPermission.denied:  return .denied
-        case AVAudioSession.RecordPermission.granted: return .authorized
+        case .denied:  return .denied
+        case .granted: return .authorized
         default:                                     return .notDetermined
         }
     }

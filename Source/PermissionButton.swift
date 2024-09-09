@@ -28,7 +28,7 @@ open class PermissionButton: UIButton {
     public let permission: Permission
     
     /// The permission domain of the button.
-    open var domain: PermissionType { return permission.type }
+    open var domain: PermissionType? { return permission.type }
     
     /// The permission status of the button.
     open var status: PermissionStatus { return permission.status }
